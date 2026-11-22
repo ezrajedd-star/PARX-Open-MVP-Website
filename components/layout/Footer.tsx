@@ -20,7 +20,7 @@ export function Footer() {
       </section>
 
       <div className="border-t border-white/10">
-        <div className="container-x grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="container-x grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
             <Image src={site.logo} alt={site.logoAlt} width={200} height={57} unoptimized className="h-12 w-auto" />
             <p className="mt-4 max-w-sm text-sm text-white/70">{site.fullName}. Rallycross racing across the Visayas and Mindanao.</p>
@@ -38,6 +38,20 @@ export function Footer() {
               ))}
             </ul>
           </nav>
+          <div>
+            <h2 className="eyebrow mb-3 text-gold">Get involved</h2>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/drive" className="font-semibold text-white hover:underline">Join as a driver →</Link>
+              </li>
+              <li>
+                <Link href="/sponsorship" className="font-semibold text-white hover:underline">Become a sponsor →</Link>
+              </li>
+              <li>
+                <Link href="/host" className="font-semibold text-white hover:underline">Host a leg in your city →</Link>
+              </li>
+            </ul>
+          </div>
           <div>
             <h2 className="eyebrow mb-3 text-gold">Follow &amp; contact</h2>
             <ul className="flex flex-wrap gap-2">

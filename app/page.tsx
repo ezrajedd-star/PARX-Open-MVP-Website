@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LegStripCard } from "@/components/calendar/LegCard";
+import { DriverCtaBand } from "@/components/cta/CtaBands";
 import { HeroMedia } from "@/components/home/HeroMedia";
 import { HeroNextLeg } from "@/components/home/HeroNextLeg";
 import { ArticleCard, FeaturedArticleCard } from "@/components/news/ArticleCard";
@@ -102,12 +103,25 @@ export default function HomePage() {
           <SectionHeading eyebrow={`Season ${site.season}`} title={<span id="cal-h">The calendar</span>} href="/calendar" linkLabel="Full calendar" />
         </div>
         <div className="container-x">
-          <ul className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0" aria-label="Season legs">
+          <ul className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 lg:grid-cols-6" aria-label="Season legs">
             {legs.map((l) => (
               <li key={l.slug} className="flex">
                 <LegStripCard leg={l} />
               </li>
             ))}
+            <li className="flex">
+              <Link
+                href="/host"
+                className="group flex h-full min-h-[220px] w-[240px] shrink-0 snap-start flex-col justify-between border-2 border-dashed border-navy/30 p-4 text-navy transition hover:border-navy hover:bg-white md:w-full md:shrink"
+              >
+                <span className="heading text-5xl text-navy/30 tabular">+</span>
+                <span>
+                  <span className="eyebrow text-red">Your city?</span>
+                  <span className="heading mt-1 block text-3xl">Want us in your city?</span>
+                  <span className="mt-3 block border-t border-navy/15 pt-3 font-display text-sm font-bold uppercase tracking-wide group-hover:text-red">Let&apos;s talk →</span>
+                </span>
+              </Link>
+            </li>
           </ul>
           <p className="mt-3 text-xs text-ink/60 md:hidden" aria-hidden>
             Swipe to see all {legs.length} legs →
@@ -138,6 +152,9 @@ export default function HomePage() {
           <MobileViewAll href="/teams" label="All teams & drivers" />
         </div>
       </section>
+
+      {/* 6b — Driver pipeline */}
+      <DriverCtaBand eyebrow="Race in PARX Open" />
 
       {/* 7 — Shop teaser */}
       <section aria-labelledby="shop-h" className="relative overflow-hidden bg-ink text-white">

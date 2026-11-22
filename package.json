@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "validate": "tsx scripts/validate-content.ts",
     "logo": "node scripts/build-logo.mjs",
-    "prebuild": "tsx scripts/validate-content.ts"
+    "prebuild": "tsx scripts/validate-content.ts",
+    "map": "node scripts/build-map.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -31,8 +32,10 @@
     "@types/react-dom": "^19.3.0",
     "opentype.js": "^2.0.0",
     "tailwindcss": "^4.3.5",
+    "topojson-client": "^3.1.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
-    "vitest": "^5.1.1"
+    "vitest": "^5.1.1",
+    "world-atlas": "^2.0.2"
   }
 }

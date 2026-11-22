@@ -70,19 +70,24 @@ export function Header({ nav, logo, logoAlt, social, fullName }: Props) {
                 <Link
                   href={n.href}
                   aria-current={isActive(n.href) ? "page" : undefined}
-                  className={`relative block px-2.5 py-2 font-display text-[15px] font-bold uppercase tracking-wide transition-colors xl:px-3.5 xl:text-base ${
+                  className={`relative block whitespace-nowrap px-2 py-2 font-display text-[15px] font-bold uppercase tracking-wide transition-colors 2xl:px-3.5 2xl:text-base ${
                     isActive(n.href) ? "text-gold" : "text-white/90 hover:text-white"
                   }`}
                 >
                   {n.label}
-                  {isActive(n.href) && <span className="absolute inset-x-2.5 -bottom-0.5 h-[3px] -skew-x-[24deg] bg-gold xl:inset-x-3.5" aria-hidden />}
+                  {isActive(n.href) && <span className="absolute inset-x-2 -bottom-0.5 h-[3px] -skew-x-[24deg] bg-gold 2xl:inset-x-3.5" aria-hidden />}
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
 
-        <Link href="/sponsorship#inquire" className={`${buttonClass("red", "sm")} ml-auto lg:ml-2`}>
+        <span className="ml-2 hidden xl:block">
+          <Link href="/drive" className={buttonClass("gold", "sm")}>
+            Join as a Driver
+          </Link>
+        </span>
+        <Link href="/sponsorship#inquire" className={`${buttonClass("red", "sm")} ml-auto lg:ml-2 xl:ml-1`}>
           <span className="sm:hidden">Sponsor</span>
           <span className="hidden sm:inline">Become a Sponsor</span>
         </Link>
@@ -127,9 +132,17 @@ export function Header({ nav, logo, logoAlt, social, fullName }: Props) {
               </li>
             ))}
           </ul>
-          <Link href="/sponsorship#inquire" className={`${buttonClass("red", "lg")} mt-8 w-full`}>
-            Become a Sponsor
-          </Link>
+          <div className="mt-8 grid gap-3">
+            <Link href="/drive" className={`${buttonClass("gold", "lg")} w-full`}>
+              Join as a Driver
+            </Link>
+            <Link href="/sponsorship#inquire" className={`${buttonClass("red", "lg")} w-full`}>
+              Become a Sponsor
+            </Link>
+            <Link href="/host" className="py-2 text-center font-display text-lg font-bold uppercase italic text-white/85 underline-offset-4 hover:underline">
+              Want us in your city? Let&apos;s talk →
+            </Link>
+          </div>
           <div className="mt-auto pt-10">
             <div className="livery mb-5 w-40" aria-hidden />
             <ul className="flex gap-2">

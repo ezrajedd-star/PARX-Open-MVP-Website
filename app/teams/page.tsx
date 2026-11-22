@@ -1,3 +1,4 @@
+import { DriverCtaBand } from "@/components/cta/CtaBands";
 import { DriverCard } from "@/components/teams/DriverCard";
 import { TeamCard } from "@/components/teams/TeamCard";
 import { PageHero, SectionHeading } from "@/components/ui/Section";
@@ -44,6 +45,7 @@ export default function TeamsPage() {
           </div>
         </section>
       ))}
+      <DriverCtaBand eyebrow="Your name on this grid" />
     </>
   );
 }

@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { FootprintMap } from "@/components/sponsorship/FootprintMap";
-import { InquiryForm } from "@/components/sponsorship/InquiryForm";
+import { FootprintMap } from "@/components/map/FootprintMap";
+import { LeadForm } from "@/components/forms/LeadForm";
 import { SponsorWall } from "@/components/sponsors/SponsorWall";
 import { LinkButton } from "@/components/ui/Button";
 import { CheckIcon, DownloadIcon, MinusIcon } from "@/components/ui/Icons";
 import { SampleBadge, SectionHeading } from "@/components/ui/Section";
 import { getLegs, getSite, getSponsorship, publicFileExists } from "@/lib/content";
 import { formatPeso } from "@/lib/format";
+import { FORM_ENDPOINTS } from "@/lib/forms";
 import { pageMeta } from "@/lib/seo";
 
 export const generateMetadata = () =>
@@ -87,6 +88,9 @@ export default function SponsorshipPage() {
                 </li>
               ))}
             </ul>
+            <Link href="/host" className="mt-6 inline-flex items-center gap-2 font-display text-lg font-bold uppercase italic text-gold underline-offset-4 hover:underline">
+              Want us in your city? Let&apos;s talk →
+            </Link>
           </div>
           <FootprintMap legs={legs} />
         </div>
@@ -215,7 +219,36 @@ export default function SponsorshipPage() {
               </a>
             )}
           </div>
-          <InquiryForm tiers={sp.tiers.map((t) => ({ id: t.id, name: t.name }))} legs={legs.map((l) => ({ slug: l.slug, label: `R${l.round} ${l.name}` }))} email={site.sponsorshipEmail} siteName={site.name} />
+          <LeadForm
+            formType="sponsorship"
+            endpoint={FORM_ENDPOINTS.sponsor}
+            email={site.sponsorshipEmail}
+            subject={`${site.name} sponsorship inquiry — {company}`}
+            submitLabel="Send inquiry"
+            successText="Your inquiry is in. Our partnerships team will get back to you shortly with the sponsor deck and leg availability."
+            fields={[
+              { name: "name", label: "Name", type: "text", required: true, autoComplete: "name" },
+              { name: "company", label: "Company / brand", type: "text", required: true, autoComplete: "organization" },
+              { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
+              { name: "mobile", label: "Mobile", type: "tel", autoComplete: "tel", placeholder: "+63" },
+              {
+                name: "tier",
+                label: "Tier of interest",
+                type: "select",
+                required: true,
+                wide: true,
+                placeholder: "Choose a tier…",
+                options: [
+                  ...sp.tiers.map((t) => ({ value: t.name, label: t.name })),
+                  { value: "Season bundle", label: "Season bundle (all legs)" },
+                  { value: "Driver / team sponsorship", label: "Driver / team sponsorship" },
+                  { value: "Not sure yet", label: "Not sure yet" },
+                ],
+              },
+              { name: "legs", label: "Legs of interest", type: "checkboxes", options: [...legs.map((l) => ({ value: `R${l.round} ${l.name}`, label: `R${l.round} ${l.name}` })), { value: "All legs", label: "All legs" }] },
+              { name: "message", label: "Message", type: "textarea", placeholder: "Tell us about your brand and goals." },
+            ]}
+          />
         </div>
       </section>
     </>

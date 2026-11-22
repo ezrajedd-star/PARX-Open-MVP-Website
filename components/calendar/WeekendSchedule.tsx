@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ScheduleBlock } from "@/lib/types";
 
 /** Day-by-day weekend timeline. Groups consecutive blocks by day. */
@@ -20,8 +21,14 @@ export function WeekendSchedule({ schedule }: { schedule: ScheduleBlock[] }) {
                 <ul className="mt-2 space-y-1.5">
                   {b.items.map((it) => (
                     <li key={it} className="flex items-center gap-2 text-[15px] font-medium text-navy">
-                      <span className={`h-2 w-3 shrink-0 -skew-x-[24deg] ${/^Stage/i.test(it) ? "bg-gold" : /Award/i.test(it) ? "bg-red" : "bg-navy/25"}`} aria-hidden />
-                      {it}
+                      <span className={`h-2 w-3 shrink-0 -skew-x-[24deg] ${/^Stage/i.test(it) ? "bg-gold" : /Award/i.test(it) ? "bg-red" : /Fundamentals/i.test(it) ? "bg-navy" : "bg-navy/25"}`} aria-hidden />
+                      {/Rally Fundamentals/i.test(it) ? (
+                        <Link href="/drive#rally-fundamentals" className="underline decoration-gold decoration-2 underline-offset-4 hover:text-red">
+                          {it}
+                        </Link>
+                      ) : (
+                        it
+                      )}
                     </li>
                   ))}
                 </ul>

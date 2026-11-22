@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "eyebrow": "Join as a driver",
+    "title": "Your seat on the grid is waiting.",
+    "subtitle": "Three ways into PARX Open — from your very first lesson to racing your own car with a team."
+  },
+  "paths": [
+    {
+      "id": "rally-fundamentals",
+      "name": "Rally Fundamentals",
+      "tag": "Best for beginners",
+      "summary": "A training module conducted by 10x National Rally Champion, Vip Isada.",
+      "points": [
+        "A 2-part course: a Lecture and a Practical portion",
+        "Conducted on the Friday of the race weekend",
+        "Special newcomer package for students — a shared vehicle is provided",
+        "Start racing with the proper instruction and guidance"
+      ],
+      "price": null,
+      "motto": null,
+      "cta": "Join the Rally Fundamentals"
+    },
+    {
+      "id": "arrive-and-drive",
+      "name": "Arrive and Drive",
+      "tag": "Experienced, no car",
+      "summary": "No rally car? No problem.",
+      "points": [
+        "For new participants with rally racing experience",
+        "A shared vehicle is provided"
+      ],
+      "price": null,
+      "motto": null,
+      "cta": "Arrive and Drive"
+    },
+    {
+      "id": "own-car",
+      "name": "Join a team or race independently",
+      "tag": "Got a rally car",
+      "summary": "You got a rally car, rally experience, and the itch to race.",
+      "points": [
+        "Compete independently, or join one of the racing teams",
+        "Score in the drivers' championship from your first leg"
+      ],
+      "price": null,
+      "motto": "When in doubt, flat out.",
+      "cta": "Enter with my car"
+    }
+  ],
+  "instructor": {
+    "name": "Vip Isada",
+    "title": "10x National Rally Champion",
+    "photo": null
+  },
+  "steps": [
+    { "title": "Register your interest", "text": "Tell us about your experience and which path fits you." },
+    { "title": "We'll get in touch", "text": "Our team contacts you with the leg schedule, requirements and package details." },
+    { "title": "Race weekend", "text": "Friday: Rally Fundamentals, Parc Exposé and the welcome party. Saturday and Sunday: eight stages and the awarding ceremony." }
+  ],
+  "packageNote": "Prices, entry requirements and the newcomer package details will be confirmed by the organisers."
+}

@@ -9,6 +9,8 @@ import matter from "gray-matter";
 import type { z } from "zod";
 import {
   ArticleFrontmatterSchema,
+  CompeteSchema,
+  HostSchema,
   LegsFileSchema,
   MerchFileSchema,
   PointsTableSchema,
@@ -64,6 +66,8 @@ function memo<T>(key: string, fn: () => T): T {
 /* ------------------------------------------------------------------ Site */
 export const getSite = () => memo("site", () => parseFile("site.json", SiteSchema));
 export const getPoints = () => memo("points", () => parseFile("points.json", PointsTableSchema));
+export const getCompete = () => memo("compete", () => parseFile("compete.json", CompeteSchema));
+export const getHost = () => memo("host", () => parseFile("host.json", HostSchema));
 export const getSponsorship = () => memo("sponsorship", () => parseFile("sponsorship.json", SponsorshipSchema));
 export const getMerch = () =>
   memo("merch", () => {

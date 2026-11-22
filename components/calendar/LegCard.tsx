@@ -64,7 +64,7 @@ export function LegStripCard({ leg }: { leg: LegWithStatus }) {
   return (
     <Link
       href={`/calendar/${leg.slug}`}
-      className="group relative flex h-full w-[240px] shrink-0 snap-start flex-col justify-between overflow-hidden bg-navy p-4 text-white ring-1 ring-white/10 transition hover:ring-gold md:w-auto"
+      className="group relative flex h-full w-[240px] shrink-0 snap-start flex-col justify-between overflow-hidden bg-navy p-4 text-white ring-1 ring-white/10 transition hover:ring-gold md:w-full md:shrink"
     >
       <div className="speed-lines absolute inset-0 opacity-60" aria-hidden />
       <div className="relative flex items-start justify-between">

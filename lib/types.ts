@@ -250,3 +250,34 @@ export const MerchItemSchema = z.object({
 });
 export type MerchItem = z.infer<typeof MerchItemSchema>;
 export const MerchFileSchema = z.object({ note: z.string().optional(), items: z.array(MerchItemSchema) });
+
+/* --------------------------------------------------------- Join as a driver */
+export const CompeteSchema = z.object({
+  hero: z.object({ eyebrow: z.string(), title: z.string(), subtitle: z.string() }),
+  paths: z
+    .array(
+      z.object({
+        id: slug,
+        name: z.string(),
+        tag: z.string(),
+        summary: z.string(),
+        points: z.array(z.string()),
+        price: z.number().nullable(),
+        motto: z.string().nullable(),
+        cta: z.string(),
+      }),
+    )
+    .min(1),
+  instructor: z.object({ name: z.string(), title: z.string(), photo: publicPath.nullable() }),
+  steps: z.array(z.object({ title: z.string(), text: z.string() })),
+  packageNote: z.string(),
+});
+export type Compete = z.infer<typeof CompeteSchema>;
+
+/* -------------------------------------------------------------- Host a leg */
+export const HostSchema = z.object({
+  hero: z.object({ eyebrow: z.string(), title: z.string(), subtitle: z.string() }),
+  benefits: z.array(z.object({ title: z.string(), text: z.string() })),
+  lookingFor: z.array(z.string()),
+});
+export type Host = z.infer<typeof HostSchema>;

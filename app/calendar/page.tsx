@@ -1,5 +1,6 @@
 import { CalendarFilter } from "@/components/calendar/CalendarFilter";
 import { LegCard } from "@/components/calendar/LegCard";
+import { DriverCtaBand, HostCtaBand } from "@/components/cta/CtaBands";
 import { PageHero } from "@/components/ui/Section";
 import { getSite } from "@/lib/content";
 import { getLegsWithStatus } from "@/lib/data";
@@ -29,6 +30,8 @@ export default function CalendarPage() {
           <CalendarFilter items={legs.map((l, i) => ({ key: l.slug, group: l.islandGroup, node: <LegCard leg={l} priority={i === 0} /> }))} />
         </div>
       </section>
+      <HostCtaBand />
+      <DriverCtaBand compact title="Race a leg" />
     </>
   );
 }

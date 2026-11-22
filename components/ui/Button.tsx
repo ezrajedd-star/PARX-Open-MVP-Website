@@ -14,7 +14,10 @@ const styles: Record<Variant, string> = {
 
 export function buttonClass(variant: Variant = "red", size: "md" | "lg" | "sm" = "md") {
   const sz = size === "lg" ? "h-13 px-6 text-lg" : size === "sm" ? "h-9 px-3.5 text-sm" : "h-11 px-5 text-base";
-  return `inline-flex items-center justify-center gap-2 whitespace-nowrap font-display font-bold uppercase italic tracking-wide transition-colors [clip-path:polygon(8px_0,100%_0,calc(100%-8px)_100%,0_100%)] ${sz} ${styles[variant]}`;
+  // Solid buttons get the slanted broadcast edge via clip-path; outlined ones would lose their
+  // border to the clip, so they get a slight skew instead.
+  const shape = variant.startsWith("ghost") ? "-skew-x-6 [&>*]:skew-x-6" : "[clip-path:polygon(8px_0,100%_0,calc(100%-8px)_100%,0_100%)]";
+  return `inline-flex items-center justify-center gap-2 whitespace-nowrap font-display font-bold uppercase italic tracking-wide transition-colors ${shape} ${sz} ${styles[variant]}`;
 }
 
 export function LinkButton({

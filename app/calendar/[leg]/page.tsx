@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LegStatusBadge } from "@/components/calendar/LegStatusBadge";
+import { DriverCtaBand } from "@/components/cta/CtaBands";
 import { VenueMap } from "@/components/calendar/VenueMap";
 import { WeekendSchedule } from "@/components/calendar/WeekendSchedule";
 import { ClassificationTable } from "@/components/results/ClassificationTable";
@@ -141,6 +142,8 @@ export default async function LegPage({ params }: Props) {
           <p className="mt-3 text-sm text-ink/65">Times are Philippine Standard Time (PHT). The schedule may change; final times are confirmed at the drivers&apos; briefing.</p>
         </div>
       </section>
+
+      <DriverCtaBand compact eyebrow={`Round ${leg.round} · ${leg.name}`} title={`Race ${leg.name}`} />
 
       {/* Gallery */}
       {leg.gallery.length > 0 && (

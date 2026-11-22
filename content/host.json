@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "eyebrow": "Host a leg",
+    "title": "Want us in your city? Let's talk.",
+    "subtitle": "PARX Open is growing beyond its first five legs. Bring a full rallycross weekend to your city or province."
+  },
+  "benefits": [
+    { "title": "A full race weekend", "text": "Friday Parc Exposé and welcome party, two days of timed stages, and a Sunday awarding ceremony." },
+    { "title": "Visitors and local business", "text": "Teams, crews and spectators travel in, and stay, eat and shop locally." },
+    { "title": "Your city on our channels", "text": "Every leg is filmed, photographed and shared across our video, photo and social channels." },
+    { "title": "Local partners", "text": "Hotels, caterers, venues and local businesses can join as Local Partners." }
+  ],
+  "lookingFor": [
+    "Open ground suitable for a rallycross course (dirt or mixed surface)",
+    "Support from the LGU or a local organiser",
+    "Space for spectators, parking and food vendors"
+  ]
+}
