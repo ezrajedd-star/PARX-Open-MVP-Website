@@ -112,7 +112,7 @@ export function Header({ nav, logo, logoAlt, social, fullName }: Props) {
         style={{ ["--menu-top" as string]: compact ? "56px" : "64px" }}
       >
         <div className="speed-lines absolute inset-0" aria-hidden />
-        <nav aria-label="Mobile" className="container-x relative flex min-h-full flex-col pb-10 pt-6">
+        <nav aria-label="Mobile" className="container-x relative flex min-h-full flex-col pb-10 pt-4">
           <ul className="space-y-1">
             {nav.map((n, i) => (
               <li key={n.href}>
@@ -121,7 +121,7 @@ export function Header({ nav, logo, logoAlt, social, fullName }: Props) {
                   aria-current={isActive(n.href) ? "page" : undefined}
                   className={`flex items-baseline gap-3 py-2.5 font-display text-[2.1rem] font-extrabold uppercase italic leading-none ${isActive(n.href) ? "text-gold" : "text-white"}`}
                 >
-                  <span className="w-6 text-sm font-bold not-italic text-white/40 tabular">{String(i + 1).padStart(2, "0")}</span>
+                  <span aria-hidden className="w-6 text-sm font-bold not-italic text-white/50 tabular">{String(i + 1).padStart(2, "0")}</span>
                   {n.label}
                 </Link>
               </li>

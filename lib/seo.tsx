@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { getSite } from "./content";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+// Falls back to Vercel's production domain, then localhost, if NEXT_PUBLIC_SITE_URL is not set.
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000")
+).replace(/\/$/, "");
 export const absUrl = (p = "/") => `${SITE_URL}${p.startsWith("/") ? p : `/${p}`}`;
 
 /** Per-page metadata with Open Graph + Twitter defaults. OG images come from opengraph-image.tsx files. */
@@ -9,7 +13,7 @@ export function pageMeta({ title, description, path, type = "website" }: { title
   const site = getSite();
   const desc = description ?? site.description;
   return {
-    title,
+    ...(title ? { title } : {}),
     description: desc,
     alternates: { canonical: path },
     openGraph: { title: title ? `${title} | ${site.name}` : site.name, description: desc, url: path, type, siteName: site.name, locale: "en_PH" },

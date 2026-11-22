@@ -23,7 +23,7 @@ const TIER_STYLE: Record<string, { bar: string; chip: string }> = {
 function Benefit({ v }: { v: boolean | string }) {
   if (v === true) return <CheckIcon className="mx-auto text-green-700" aria-label="Included" title="Included" />;
   if (v === false) return <MinusIcon className="mx-auto text-ink/30" aria-label="Not included" title="Not included" />;
-  return <span className={v === "TBA" ? "text-ink/55" : "font-semibold text-navy"}>{v}</span>;
+  return <span className={v === "TBA" ? "text-ink/60" : "font-semibold text-navy"}>{v}</span>;
 }
 
 export default function SponsorshipPage() {
@@ -63,7 +63,7 @@ export default function SponsorshipPage() {
             {site.stats.map((s) => (
               <li key={s.label} className="relative overflow-hidden bg-navy p-4 text-white md:p-5">
                 <span className="absolute inset-x-0 top-0 h-1 bg-gold" aria-hidden />
-                <p className={`heading text-5xl tabular md:text-6xl ${s.value ? "" : "text-white/40"}`}>{s.value ?? "TBA"}</p>
+                <p className={`heading text-5xl tabular md:text-6xl ${s.value ? "" : "text-white/55"}`}>{s.value ?? "TBA"}</p>
                 <p className="eyebrow mt-2 text-[11px] text-white/75">{s.label}</p>
               </li>
             ))}

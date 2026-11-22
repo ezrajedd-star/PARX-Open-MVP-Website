@@ -73,7 +73,7 @@ export function SponsorWall({
       {groups.map((g) => (
         <div key={g.tier}>
           {showTierLabels && (
-            <p className={`eyebrow mb-3 flex items-center gap-2 ${dark ? "text-white/60" : "text-navy/60"}`}>
+            <p className={`eyebrow mb-3 flex items-center gap-2 ${dark ? "text-white/60" : "text-navy/75"}`}>
               <span className="inline-block h-2 w-2 -skew-x-12" style={{ background: TIER_ACCENT[g.tier] }} aria-hidden />
               {g.label}
             </p>

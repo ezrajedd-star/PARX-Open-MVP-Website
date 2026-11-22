@@ -74,7 +74,7 @@ export default async function DriverPage({ params }: Props) {
               {facts.map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-4 px-4 py-3">
                   <dt className="eyebrow text-ink/60">{k}</dt>
-                  <dd className={`text-right font-semibold ${v === "TBA" ? "text-ink/50" : "text-navy"}`}>{v}</dd>
+                  <dd className={`text-right font-semibold ${v === "TBA" ? "text-ink/60" : "text-navy"}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -107,7 +107,7 @@ export default async function DriverPage({ params }: Props) {
                         <p className="text-sm text-ink/70 tabular">{c.points} pts</p>
                       </>
                     ) : (
-                      <p className="font-display text-lg font-bold uppercase text-ink/50">TBA</p>
+                      <p className="font-display text-lg font-bold uppercase text-ink/60">TBA</p>
                     )}
                   </div>
                 </li>

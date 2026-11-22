@@ -104,7 +104,7 @@ export function StandingsTable({
                       {c ? (
                         <span className="flex flex-col items-center leading-tight">
                           <span className="font-semibold text-navy">{c.points}</span>
-                          <span className="text-[10px] text-ink/55">{c.status === "FIN" ? (kind === "Team" ? `best P${c.position}` : `P${c.position}`) : c.status}</span>
+                          <span className="text-[10px] text-ink/60">{c.status === "FIN" ? (kind === "Team" ? `best P${c.position}` : `P${c.position}`) : c.status}</span>
                         </span>
                       ) : (
                         <span className="text-ink/30" aria-label="No result">–</span>

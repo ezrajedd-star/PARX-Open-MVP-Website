@@ -1,16 +1,19 @@
 const TZ = "Asia/Manila";
 
-/** "12–14 Mar 2027", "28 Feb – 2 Mar 2027", or "Dates TBA". */
+/** "Mar 12–14, 2027", "Feb 28 – Mar 2, 2027", "Dec 30, 2027 – Jan 1, 2028" or "Dates TBA". */
 export function formatLegDates(dates: { start: string; end: string } | null): string {
   if (!dates) return "Dates TBA";
-  const s = new Date(`${dates.start}T12:00:00+08:00`);
-  const e = new Date(`${dates.end}T12:00:00+08:00`);
-  const d = (x: Date, o: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat("en-PH", { timeZone: TZ, ...o }).format(x);
-  const sameMonth = d(s, { month: "short", year: "numeric" }) === d(e, { month: "short", year: "numeric" });
-  if (dates.start === dates.end) return d(s, { day: "numeric", month: "short", year: "numeric" });
-  if (sameMonth) return `${d(s, { day: "numeric" })}–${d(e, { day: "numeric", month: "short", year: "numeric" })}`;
-  return `${d(s, { day: "numeric", month: "short" })} – ${d(e, { day: "numeric", month: "short", year: "numeric" })}`;
+  const parts = (iso: string) => {
+    const [y, m, d] = iso.split("-").map(Number);
+    return { y, d, mon: MONTHS[m - 1] };
+  };
+  const s = parts(dates.start), e = parts(dates.end);
+  if (dates.start === dates.end) return `${s.mon} ${s.d}, ${s.y}`;
+  if (s.y !== e.y) return `${s.mon} ${s.d}, ${s.y} – ${e.mon} ${e.d}, ${e.y}`;
+  if (s.mon !== e.mon) return `${s.mon} ${s.d} – ${e.mon} ${e.d}, ${e.y}`;
+  return `${s.mon} ${s.d}–${e.d}, ${s.y}`;
 }
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export function formatDate(iso: string, style: "long" | "short" = "long"): string {
   return new Intl.DateTimeFormat("en-PH", {
