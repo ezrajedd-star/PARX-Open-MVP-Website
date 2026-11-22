@@ -193,18 +193,18 @@ body {
   text-underline-offset: 3px;
   font-weight: 600;
 }
-.prose-parx ul {
+.prose-parx > ul {
   list-style: none;
   padding-left: 0;
 }
-.prose-parx ul li {
+.prose-parx > ul > li {
   position: relative;
   padding-left: 1.5em;
 }
-.prose-parx ul li + li {
+.prose-parx > ul > li + li {
   margin-top: 0.5em;
 }
-.prose-parx ul li::before {
+.prose-parx > ul > li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -214,7 +214,7 @@ body {
   background: var(--parx-red);
   transform: skewX(-24deg);
 }
-.prose-parx ol {
+.prose-parx > ol {
   list-style: decimal;
   padding-left: 1.4em;
 }

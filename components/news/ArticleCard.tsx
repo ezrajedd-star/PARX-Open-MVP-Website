@@ -53,7 +53,7 @@ export function FeaturedArticleCard({ a, headingLevel = "h3", priority = false, 
   const H = headingLevel;
   return (
     <article className={`group relative overflow-hidden bg-navy text-white ${fill ? "lg:h-full" : ""}`}>
-      <Photo src={a.image} alt={a.imageAlt} kind="hero" className={`aspect-[4/5] sm:aspect-[16/9] ${fill ? "lg:aspect-auto lg:h-full lg:min-h-[480px]" : "lg:aspect-[16/8]"}`} sizes="(min-width:1024px) 66vw, 100vw" priority={priority} showLabel={false} />
+      <Photo src={a.image} alt={a.imageAlt} kind="hero" className={`aspect-[4/5] sm:aspect-[16/9] ${fill ? "lg:aspect-auto lg:h-full lg:min-h-[480px]" : "lg:aspect-[21/9]"}`} sizes="(min-width:1024px) 66vw, 100vw" priority={priority} showLabel={false} />
       <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/50 to-transparent" aria-hidden />
       <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
         <CategoryTag category={a.category} tone="gold" />
