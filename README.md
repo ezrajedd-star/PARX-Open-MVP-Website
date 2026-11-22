@@ -8,6 +8,7 @@ Official website for **PARX Open — Pilipinas Archipelago RallyCross Open**: ca
 - Mobile first: every component is designed at 375px, then scaled up
 
 > Editors: see **[CONTENT_GUIDE.md](CONTENT_GUIDE.md)** for how to add news, update results, add sponsors, etc.
+> Results come from **Stage Clock** automatically when a leg is closed: see **[STAGE_CLOCK.md](STAGE_CLOCK.md)**.
 > Before launch: work through **[PLACEHOLDERS.md](PLACEHOLDERS.md)**.
 
 ## Setup
@@ -25,7 +26,8 @@ cp .env.example .env.local
 | Variable | Purpose |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Public URL, used for canonical links, sitemap and Open Graph. No trailing slash. |
-| `NEXT_PUBLIC_FORM_ENDPOINT` | Sponsorship form endpoint (e.g. Formspree `https://formspree.io/f/xxxx`). Empty = the form opens a pre-filled email instead. |
+| `NEXT_PUBLIC_FORM_ENDPOINT` | Form endpoint for all forms (e.g. Formspree `https://formspree.io/f/xxxx`). Empty = forms open a pre-filled email instead. |
+| `NEXT_PUBLIC_SPONSOR_FORM_ENDPOINT`, `NEXT_PUBLIC_DRIVER_FORM_ENDPOINT`, `NEXT_PUBLIC_HOST_FORM_ENDPOINT` | Optional separate endpoints for the sponsorship, driver registration and host-a-leg forms (fall back to `NEXT_PUBLIC_FORM_ENDPOINT`). |
 | `NEXT_PUBLIC_META_PIXEL_ID` | Meta (Facebook) Pixel ID. Empty = pixel disabled. |
 
 ## Develop
@@ -44,6 +46,8 @@ Other scripts:
 | `npm test` | Unit tests for leg status (Manila time), countdown and standings maths. |
 | `npm run typecheck` | TypeScript check. |
 | `npm run logo` | Regenerates the placeholder wordmark `public/brand/parx-logo.svg`. |
+| `npm run map` | Regenerates the coastline map data (`components/map/ph-map-data.ts`) from Natural Earth. |
+| `npm run import:stage-clock -- --leg ormoc` | Imports a closed leg from Stage Clock (normally done by the GitHub Action). See STAGE_CLOCK.md. |
 
 ## Build
 
@@ -83,11 +87,17 @@ app/                     Routes (App Router)
   teams/ [team]/         Teams index + team pages
   drivers/[driver]/      Driver pages
   shop/ sponsorship/
+  drive/                 Join as a Driver (Rally Fundamentals, Arrive and Drive, own car) + registration form
+  host/                  "Want us in your city? Let's talk." + host-city form
+  api/legs.json/         Public leg list (used by Stage Clock's close-leg dialog)
   sitemap.ts robots.ts opengraph-image.tsx
 components/
   layout/                Header, Ticker (next race / LIVE), Footer, Countdown, leg-status provider, Meta Pixel
   ui/                    Buttons, section headings, icons, branded placeholders, Photo
   sponsors/              Tier-aware sponsor wall (footer, Home, leg pages, Sponsorship)
+  forms/LeadForm.tsx     Shared form (sponsor, driver, host): validation, endpoint POST, mailto fallback
+  map/                   Coastline map of the Visayas & Northern Mindanao with host cities
+  cta/                   "Join as a driver" and "Host a leg" bands
   calendar/ results/ news/ teams/ sponsorship/ shop/ home/
 content/                 ← all editable content (see CONTENT_GUIDE.md)
 lib/
@@ -95,6 +105,7 @@ lib/
   content.ts             Loads + validates + cross-checks /content
   status.ts              Leg status & countdown in Asia/Manila time (+ tests)
   standings.ts           Points, classification, driver & team standings (+ tests)
+  stage-clock/           Stage Clock import: vendored timing maths + mapping to PARX results (+ tests)
   seo.tsx og.tsx format.ts data.ts
 public/
   brand/parx-logo.svg    Placeholder wordmark — replace this one file with the final logo
@@ -104,6 +115,8 @@ assets/fonts/            Fonts used by generated Open Graph images
 ```
 
 ## How key features work
+
+- **Live timing & results**: Stage Clock runs live timing on a subdomain (`live.<domain>`). When the admin closes a leg there, a GitHub Action imports the final results into `content/results/`, and Vercel republishes within about 2 minutes. See STAGE_CLOCK.md.
 
 - **Leg status** (Upcoming / Next / Live / Completed) is computed from each leg's dates in **Asia/Manila** time, at build time *and* again in the browser every 30 s, so a cached page never shows a stale state. `statusOverride` in `content/legs.json` always wins. Legs with `"dates": null` show "Dates TBA" and can still be "Next".
 - **Countdown** targets 00:00 Manila time on the leg's start date. During a race weekend the ticker under the header turns red (**LIVE**) and links to the leg page.
@@ -115,7 +128,7 @@ assets/fonts/            Fonts used by generated Open Graph images
 ## Quality checks (at hand-over)
 
 - `npm run build`: clean, 77 static pages
-- `npm test`: 15 tests passing
+- `npm test`: 25 tests passing
 - Lighthouse mobile (production build, simulated throttling):
   - Home: Performance 97–99 · Accessibility 100 · Best Practices 100 · SEO 100
   - Results: Performance 99–100 · Accessibility 100 · Best Practices 100 · SEO 100

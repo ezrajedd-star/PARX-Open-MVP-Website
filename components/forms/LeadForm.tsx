@@ -61,7 +61,11 @@ export function LeadForm({ formType, fields, endpoint, email, subject, submitLab
     return { d, gotcha: !!fd.get("_gotcha") };
   };
   const label = (f: FieldDef, v: string) => (f.type === "select" || f.type === "radio-cards" ? (f.options.find((o) => o.value === v)?.label ?? v) : v);
-  const subj = (d: Record<string, string>) => subject.replace(/\{(\w+)\}/g, (_, k) => d[k] || "—");
+  const subj = (d: Record<string, string>) =>
+    subject.replace(/\{(\w+)\}/g, (_, k) => {
+      const f = fields.find((x) => x.name === k);
+      return (f ? label(f, d[k]) : d[k]) || "—";
+    });
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

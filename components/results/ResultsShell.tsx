@@ -24,6 +24,13 @@ export function ResultsShell({ children, sample }: { children: ReactNode; sample
             </div>
           )}
           {children}
+          <p className="mt-6 text-sm text-ink/75">
+            During a race weekend, stage times are live on{" "}
+            <a href={site.liveTiming.url} target="_blank" rel="noopener" className="font-semibold text-red underline underline-offset-2">
+              {site.liveTiming.label}
+            </a>
+            . Official results and standings are published here as soon as the leg is closed.
+          </p>
           <details className="mt-8 bg-white p-4 text-sm ring-1 ring-navy/10">
             <summary className="cursor-pointer font-display text-base font-bold uppercase italic text-navy">Points system</summary>
             <p className="mt-3 text-ink/75">{points.note}</p>

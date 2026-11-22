@@ -106,7 +106,7 @@ export default function DrivePage() {
             <h2 id="coach-h" className="heading mt-2 text-6xl text-navy md:text-7xl">
               {c.instructor.name}
             </h2>
-            <p className="heading mt-1 text-3xl text-gold [text-shadow:0_1px_0_rgb(11_31_75/.25)]">{c.instructor.title}</p>
+            <p className="heading mt-2 inline-block bg-navy px-2.5 py-1 text-2xl text-gold md:text-3xl">{c.instructor.title}</p>
             <div className="livery mt-5 w-40" aria-hidden />
             <p className="mt-5 max-w-xl text-lg text-ink/80">
               Learn from a champion before you race. The Rally Fundamentals runs on the Friday of each race weekend in two parts — a lecture, then a practical session in the car — so you line up on Saturday with the proper instruction and guidance.

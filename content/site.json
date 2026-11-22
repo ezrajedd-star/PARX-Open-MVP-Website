@@ -16,6 +16,10 @@
   "sponsorshipEmail": "partners@parx-open.example",
   "accreditation": "",
   "sponsorDeck": "/docs/parx-open-sponsor-deck.pdf",
+  "liveTiming": {
+    "url": "https://stage-clock-rho.vercel.app",
+    "label": "Live timing"
+  },
   "timezone": "Asia/Manila",
   "social": [
     {

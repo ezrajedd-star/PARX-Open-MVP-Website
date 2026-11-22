@@ -25,7 +25,10 @@ export function classRowsForLeg(legSlug: string): { sample: boolean; rows: Class
         points: r.points,
         stages: r.stageMs.map((s) => formatTime(s)),
         stageBest: r.stageBest,
+        stageFlags: r.stageFlags,
         className: r.class,
+        classPosition: r.classPosition,
+        carNumber: r.carNumber,
       };
     }),
   };

@@ -50,6 +50,9 @@ export function Footer() {
               <li>
                 <Link href="/host" className="font-semibold text-white hover:underline">Host a leg in your city →</Link>
               </li>
+              <li>
+                <a href={site.liveTiming.url} target="_blank" rel="noopener" className="font-semibold text-white hover:underline">{site.liveTiming.label} (Stage Clock) →</a>
+              </li>
             </ul>
           </div>
           <div>

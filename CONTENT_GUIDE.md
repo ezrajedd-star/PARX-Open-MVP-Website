@@ -27,7 +27,10 @@ If you make a mistake, such as a missing comma or a wrong date format, the build
 | Change the series name, tagline, email, social links or audience stats | `content/site.json` |
 | Set a leg's dates, venue, schedule or spectator info | `content/legs.json` |
 | Add or edit teams and drivers | `content/teams.json` |
-| Publish race results | `content/results/{leg-slug}.json` |
+| Publish race results | Automatic from Stage Clock when a leg is closed ([STAGE_CLOCK.md](STAGE_CLOCK.md)), or by hand in `content/results/{leg-slug}.json` |
+| Fix a Stage Clock name that matched the wrong driver | `content/stage-clock.json` → `aliases` |
+| Edit the Join as a Driver page (paths, instructor, steps) | `content/compete.json` |
+| Edit the Host a Leg page | `content/host.json` |
 | Change the points system | `content/points.json` |
 | Add or remove sponsors | `content/sponsors.json` |
 | Change sponsorship packages, prices or benefits | `content/sponsorship.json` |
@@ -127,9 +130,11 @@ Each leg looks like this:
 
 ---
 
-## Publish results: `content/results/{leg-slug}.json`
+## Publish results
 
-Create one file per leg, named after the leg's slug, e.g. `content/results/tabogon.json`:
+**Normally you don't need to do anything.** When the admin closes a leg in Stage Clock (**Close leg & publish to PARX Open**), the results file below is created automatically and the site updates within about 2 minutes. New drivers are added to the Independent Drivers team, and the import summary lists them on GitHub under Actions. Details are in [STAGE_CLOCK.md](STAGE_CLOCK.md).
+
+To enter or correct results by hand, edit `content/results/{leg-slug}.json`. Create one file per leg, named after the leg's slug, e.g. `content/results/tabogon.json`:
 
 ```json
 {
@@ -146,9 +151,10 @@ Create one file per leg, named after the leg's slug, e.g. `content/results/tabog
 - **driverSlug** is the driver's slug from `teams.json`.
 - **status** is one of `FIN` (finished), `DNF` (did not finish), `DNS` (did not start) or `DSQ` (disqualified).
 - **position** is the official finishing position for `FIN`, and `null` for everyone else. Positions must run 1, 2, 3… with no gaps.
-- **stageTimes** are always 8 values, SS1 to SS8, written as `minutes:seconds.thousandths`. Use `null` for a stage not run.
+- **stageTimes** has one value per stage (up to 12; every entry has the same number), written as `minutes:seconds.thousandths`. Use `null` for a stage without a time.
+- **stageFlags** (optional, set by the Stage Clock import): `"DNF"`, `"DNS"`, `"DROPPED"`, `"PENALTY"` or `null` per stage.
 - **totalTime** (optional): add `"totalTime": "8:25.934"` to override the total. Otherwise it's the sum of the stage times.
-- **class** (optional): add `"class": "4WD"` if classes are introduced.
+- **class** / **classPosition** / **carNumber** / **car** (optional): filled by the Stage Clock import. The leg results page shows class filter chips when classes are present.
 
 That's it. **Points, gaps, driver standings, team standings, movement arrows and the podium share image are all calculated automatically.** Never type totals in by hand.
 
@@ -264,3 +270,11 @@ npm run validate
 ```bash
 npm run dev
 ```
+
+## Join as a Driver: `content/compete.json`
+
+The three entry paths (Rally Fundamentals, Arrive and Drive, Join a team or race independently), the instructor, the "How it works" steps and the note about packages. Set `"price": 3500` (for example) on a path to show a price per leg; `null` shows "Package details: TBA". Registrations arrive through the form endpoint (or by email).
+
+## Host a Leg: `content/host.json`
+
+The "Want us in your city? Let's talk." page: the benefits list and "What we look for". Inquiries arrive through the form endpoint (or by email).

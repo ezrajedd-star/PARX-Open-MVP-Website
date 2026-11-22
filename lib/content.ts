@@ -11,6 +11,7 @@ import {
   ArticleFrontmatterSchema,
   CompeteSchema,
   HostSchema,
+  StageClockConfigSchema,
   LegsFileSchema,
   MerchFileSchema,
   PointsTableSchema,
@@ -160,6 +161,10 @@ export const getResultsFiles = (): ResultsFile[] =>
           if (e.status !== "FIN" && e.position != null)
             throw new ContentError(file, `  • entries.${i}: ${e.status} entries must have "position": null`);
           if (e.position != null) positions.push(e.position);
+          if (e.stageTimes.length !== r.entries[0].stageTimes.length)
+            throw new ContentError(file, `  • entries.${i}: every entry needs the same number of stage times (${r.entries[0].stageTimes.length}); use null for stages without a time`);
+          if (e.stageFlags && e.stageFlags.length !== e.stageTimes.length)
+            throw new ContentError(file, `  • entries.${i}.stageFlags must have one value per stage (${e.stageTimes.length})`);
         });
         positions.sort((a, b) => a - b).forEach((p, i) => {
           if (p !== i + 1) throw new ContentError(file, `  • positions must run 1, 2, 3… without gaps or repeats (problem near P${p})`);
@@ -168,6 +173,17 @@ export const getResultsFiles = (): ResultsFile[] =>
       });
   });
 export const getResultsForLeg = (legSlug: string) => getResultsFiles().find((r) => r.legSlug === legSlug);
+
+/* ----------------------------------------------------------- Stage Clock */
+export const getStageClockConfig = () =>
+  memo("stageclock", () => {
+    const c = parseFile("stage-clock.json", StageClockConfigSchema);
+    const driverSlugs = new Set(getDrivers().map((d) => d.slug));
+    for (const [name, slug] of Object.entries(c.aliases))
+      if (!driverSlugs.has(slug)) throw new ContentError("stage-clock.json", `  • aliases."${name}": "${slug}" is not a driver in teams.json`);
+    if (!getTeams().some((t) => t.slug === c.newDriverTeam)) throw new ContentError("stage-clock.json", `  • newDriverTeam "${c.newDriverTeam}" is not a team in teams.json`);
+    return c;
+  });
 
 /* -------------------------------------------------------------- Sponsors */
 export const TIER_ORDER: SponsorTier[] = ["title", "gold", "silver", "bronze", "local"];

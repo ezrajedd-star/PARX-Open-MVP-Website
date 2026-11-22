@@ -12,7 +12,8 @@
     "validate": "tsx scripts/validate-content.ts",
     "logo": "node scripts/build-logo.mjs",
     "prebuild": "tsx scripts/validate-content.ts",
-    "map": "node scripts/build-map.mjs"
+    "map": "node scripts/build-map.mjs",
+    "import:stage-clock": "tsx scripts/import-stage-clock.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

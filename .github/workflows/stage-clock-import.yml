@@ -1,0 +1,68 @@
+# Publishes a closed Stage Clock leg to the PARX Open website.
+#
+# Triggered automatically by Stage Clock ("Close leg & publish") via repository_dispatch,
+# or manually: GitHub → Actions → "Import results from Stage Clock" → Run workflow.
+# It imports the results, validates all content and runs the tests, then commits to this
+# branch; Vercel redeploys the site automatically (about 1–2 minutes end to end).
+name: Import results from Stage Clock
+
+on:
+  repository_dispatch:
+    types: [stage-clock-leg-closed]
+  workflow_dispatch:
+    inputs:
+      leg:
+        description: "Leg slug, e.g. ormoc"
+        required: true
+      force:
+        description: "Import even if Stage Clock was closed for a different leg"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stage-clock-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # Untrusted input is passed through env vars only, never interpolated into scripts.
+      LEG: ${{ github.event.client_payload.leg || inputs.leg }}
+      FORCE: ${{ inputs.force && '--force' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Check leg slug
+        run: |
+          if ! [[ "$LEG" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+            echo "::error::Invalid leg slug: '$LEG'"; exit 1
+          fi
+
+      - name: Import from Stage Clock
+        run: npm run import:stage-clock -- --leg "$LEG" $FORCE --summary "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate content and run tests
+        run: npm run validate && npm test
+
+      - name: Commit and push
+        run: |
+          git config user.name "PARX Open results bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/
+          if git diff --cached --quiet; then
+            echo "No changes to publish."; exit 0
+          fi
+          git commit -m "Results: import $LEG from Stage Clock"
+          git push

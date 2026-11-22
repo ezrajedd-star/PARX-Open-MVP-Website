@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <LegStatusProvider legs={legs} initial={computeStatuses(legs)}>
           <Header nav={site.nav} logo={site.logo} logoAlt={site.logoAlt} social={site.social} fullName={site.fullName} />
-          <Ticker />
+          <Ticker liveTiming={site.liveTiming} />
           <main id="main">{children}</main>
         </LegStatusProvider>
         <Footer />

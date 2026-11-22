@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { LegStatusBadge } from "@/components/calendar/LegStatusBadge";
+import { LegStatusBadge, ShowWhenStatus } from "@/components/calendar/LegStatusBadge";
 import { DriverCtaBand } from "@/components/cta/CtaBands";
 import { VenueMap } from "@/components/calendar/VenueMap";
 import { WeekendSchedule } from "@/components/calendar/WeekendSchedule";
 import { ClassificationTable } from "@/components/results/ClassificationTable";
 import { SponsorWall } from "@/components/sponsors/SponsorWall";
-import { LinkButton } from "@/components/ui/Button";
+import { LinkButton, buttonClass } from "@/components/ui/Button";
 import { ArrowRight, CalendarIcon, PinIcon } from "@/components/ui/Icons";
 import { Photo } from "@/components/ui/Photo";
 import { SampleBadge, SectionHeading } from "@/components/ui/Section";
@@ -99,6 +99,11 @@ export default async function LegPage({ params }: Props) {
             </div>
           </div>
           <div className="livery mt-6 w-48 md:w-72" aria-hidden />
+          <ShowWhenStatus slug={leg.slug} initial={leg.status} is={["live"]}>
+            <a href={site.liveTiming.url} target="_blank" rel="noopener" className={`${buttonClass("red", "lg")} mt-6`}>
+              <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-white" aria-hidden /> {site.liveTiming.label} — stage times as they happen
+            </a>
+          </ShowWhenStatus>
           <dl className="mt-6 grid gap-3 text-sm sm:grid-cols-2 md:flex md:gap-8">
             <div className="flex items-center gap-2">
               <dt>

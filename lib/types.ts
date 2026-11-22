@@ -30,6 +30,8 @@ export const SiteSchema = z.object({
   sponsorshipEmail: z.string().email(),
   accreditation: z.string(),
   sponsorDeck: publicPath.nullable(),
+  /** Stage Clock (live timing). Point it at the live.<your-domain> subdomain once DNS is set up. */
+  liveTiming: z.object({ url: z.string().url(), label: z.string() }),
   timezone: z.literal("Asia/Manila"),
   social: z.array(z.object({ platform: SocialPlatform, label: z.string(), url: z.string().url() })),
   facebookPageName: z.string(),
@@ -135,20 +137,30 @@ export type Driver = DriverInput & {
 /* ---------------------------------------------------------------- Results */
 const stageTime = z
   .string()
-  .regex(/^(\d+:)?\d{1,2}\.\d{1,3}$|^\d+:\d{2}(\.\d{1,3})?$/, "Stage times look like 1:02.345")
+  .regex(/^(\d+:)?(\d{1,2}:)?\d{1,2}(\.\d{1,3})?$/, "Times look like 1:02.345 (or 1:02:03.456 over an hour)")
   .nullable();
 export const ResultStatus = z.enum(["FIN", "DNF", "DNS", "DSQ"]);
 export type ResultStatus = z.infer<typeof ResultStatus>;
+
+export const StageFlag = z.enum(["DNF", "DNS", "DROPPED", "PENALTY"]);
+export type StageFlag = z.infer<typeof StageFlag>;
 
 export const ResultSchema = z.object({
   driverSlug: slug,
   /** Official classified position. Must be null for DNF/DNS/DSQ. */
   position: z.number().int().positive().nullable(),
   status: ResultStatus,
-  stageTimes: z.array(stageTime).length(8, "Provide exactly 8 stage times (use null for missing)"),
+  /** One time per stage run at the leg (SS1, SS2, …; up to 12). Use null for a stage with no time. */
+  stageTimes: z.array(stageTime).min(1, "Provide at least one stage time").max(12, "At most 12 stages"),
+  /** Optional per-stage notes, same length as stageTimes: DNF/DNS (substitute time), DROPPED (not counted), PENALTY (time includes a penalty). */
+  stageFlags: z.array(StageFlag.nullable()).optional(),
   /** Optional — when null the total is the sum of the stage times. */
   totalTime: stageTime.optional(),
   class: z.string().nullable().optional(),
+  /** Position within the class (imported from Stage Clock). */
+  classPosition: z.number().int().positive().nullable().optional(),
+  carNumber: z.string().nullable().optional(),
+  car: z.string().nullable().optional(),
 });
 export type ResultInput = z.infer<typeof ResultSchema>;
 export type Result = ResultInput & { legSlug: string };
@@ -157,6 +169,17 @@ export const ResultsFileSchema = z.object({
   legSlug: slug,
   sample: z.boolean().default(false),
   note: z.string().optional(),
+  /** Set by the Stage Clock importer. */
+  source: z
+    .object({
+      system: z.literal("stage-clock"),
+      importedAt: z.string(),
+      eventName: z.string().nullable(),
+      closedAt: z.string().nullable(),
+      dnfPenaltySeconds: z.number(),
+      dnfCalculationMethod: z.enum(["class", "overall"]),
+    })
+    .optional(),
   entries: z.array(ResultSchema),
 });
 export type ResultsFile = z.infer<typeof ResultsFileSchema>;
@@ -281,3 +304,16 @@ export const HostSchema = z.object({
   lookingFor: z.array(z.string()),
 });
 export type Host = z.infer<typeof HostSchema>;
+
+/* ------------------------------------------------------------- Stage Clock */
+export const StageClockConfigSchema = z.object({
+  note: z.string().optional(),
+  firestore: z.object({ projectId: z.string(), databaseId: z.string() }),
+  /** Stage Clock driver name (any case/punctuation) → PARX driver slug. */
+  aliases: z.record(z.string(), slug),
+  /** Stage Clock names to skip entirely (e.g. test rows that were not hidden). */
+  ignore: z.array(z.string()),
+  /** Team that newly seen drivers are added to. */
+  newDriverTeam: slug,
+});
+export type StageClockConfig = z.infer<typeof StageClockConfigSchema>;

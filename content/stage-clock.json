@@ -1,0 +1,15 @@
+{
+  "note": "Stage Clock → PARX results import settings. See STAGE_CLOCK.md. Aliases marked in STAGE_CLOCK.md as 'to confirm' were inferred from Stage Clock names.",
+  "firestore": {
+    "projectId": "gen-lang-client-0279774038",
+    "databaseId": "ai-studio-908e4f64-e003-435a-80ae-32d2f71bac07"
+  },
+  "aliases": {
+    "C. VIP": "vip",
+    "VM Toto": "toto",
+    "Raprap": "raphael",
+    "Zoylo": "zoilo"
+  },
+  "ignore": [],
+  "newDriverTeam": "independent"
+}

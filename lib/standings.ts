@@ -2,7 +2,7 @@
  * Championship maths — derived entirely from results + points config.
  * Nothing in here is ever typed in by hand.
  */
-import type { PointsTable, ResultInput, ResultStatus, ResultsFile } from "./types";
+import type { PointsTable, ResultInput, ResultStatus, ResultsFile, StageFlag } from "./types";
 
 export function parseTime(t: string | null | undefined): number | null {
   if (!t) return null;
@@ -44,7 +44,11 @@ export interface ClassifiedRow {
   points: number;
   stageMs: (number | null)[];
   class: string | null;
-  /** Fastest time on each stage across the field. */
+  classPosition: number | null;
+  carNumber: string | null;
+  car: string | null;
+  stageFlags: (StageFlag | null)[];
+  /** Fastest time on each stage across the field (real times only, not DNF/DNS substitutes or dropped runs). */
   stageBest: boolean[];
 }
 
@@ -58,15 +62,21 @@ export function classify(file: ResultsFile, table: PointsTable): ClassifiedRow[]
     points: pointsFor(e, table),
     stageMs: e.stageTimes.map(parseTime),
     class: e.class ?? null,
+    classPosition: e.classPosition ?? null,
+    carNumber: e.carNumber ?? null,
+    car: e.car ?? null,
+    stageFlags: e.stageFlags ?? e.stageTimes.map(() => null),
     stageBest: [] as boolean[],
   }));
   const statusRank: Record<ResultStatus, number> = { FIN: 0, DNF: 1, DSQ: 2, DNS: 3 };
   rows.sort((a, b) => statusRank[a.status] - statusRank[b.status] || (a.position ?? 999) - (b.position ?? 999));
   const leader = rows.find((r) => r.position === 1)?.totalMs ?? null;
-  const best = Array.from({ length: 8 }, (_, i) => Math.min(...rows.map((r) => r.stageMs[i] ?? Infinity)));
+  const n = rows[0]?.stageMs.length ?? 0;
+  const real = (r: (typeof rows)[number], i: number) => (r.stageFlags[i] === "DNF" || r.stageFlags[i] === "DNS" || r.stageFlags[i] === "DROPPED" ? null : r.stageMs[i]);
+  const best = Array.from({ length: n }, (_, i) => Math.min(...rows.map((r) => real(r, i) ?? Infinity)));
   for (const r of rows) {
     r.gapMs = r.status === "FIN" && leader != null && r.totalMs != null ? r.totalMs - leader : null;
-    r.stageBest = r.stageMs.map((t, i) => t != null && t === best[i]);
+    r.stageBest = r.stageMs.map((_, i) => real(r, i) != null && real(r, i) === best[i]);
   }
   return rows;
 }

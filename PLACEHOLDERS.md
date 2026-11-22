@@ -65,7 +65,24 @@ Everything below is currently a placeholder, sample or TBA. Nothing on the site 
 - [ ] Leg Edition designs for rounds 2–5 (shown as "Design reveal coming soon")
 - [ ] Payment methods at the venue (copy says "to be confirmed per venue")
 
+## Join as a Driver: `content/compete.json`
+- [ ] Prices and newcomer package details for each path ("Package details: TBA")
+- [ ] Entry requirements (licence, safety gear, minimum age): currently only "to be confirmed"
+- [ ] Instructor photo of Vip Isada (`compete.json → instructor.photo`). Also confirm whether he is the "Vip" in the Independent drivers list, so the pages can link.
+- [ ] Rally Fundamentals time on Friday ("Time TBA" in the standard schedule)
+
+## Host a Leg: `content/host.json`
+- [ ] Review the benefits and "What we look for" copy
+
+## Stage Clock: see STAGE_CLOCK.md → One-time setup
+- [ ] Make `main` the default/production branch and allow Actions to push
+- [ ] `PARX_GITHUB_TOKEN` and `VITE_PARX_SITE_URL` on the Stage Clock Vercel project
+- [ ] Merge Stage Clock branch `feature/parx-close-leg`
+- [ ] `live.<domain>` subdomain + Firebase authorized domain; update `site.json → liveTiming.url`
+- [ ] Confirm the inferred name aliases in `content/stage-clock.json`
+- [ ] Decide whether points are overall (current) or per class
+
 ## Environment variables (Vercel)
 - [ ] `NEXT_PUBLIC_SITE_URL`: production domain
-- [ ] `NEXT_PUBLIC_FORM_ENDPOINT`: Formspree (or similar) endpoint; until then the form falls back to `mailto:`
+- [ ] `NEXT_PUBLIC_FORM_ENDPOINT`: Formspree (or similar) endpoint; until then the forms fall back to `mailto:`. Optionally set separate `NEXT_PUBLIC_{SPONSOR,DRIVER,HOST}_FORM_ENDPOINT`.
 - [ ] `NEXT_PUBLIC_META_PIXEL_ID`: Meta Pixel (disabled while empty)
