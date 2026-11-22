@@ -28,7 +28,7 @@ export function Photo({
 }) {
   if (src && publicFileExists(src)) {
     return (
-      <div className={`relative overflow-hidden bg-navy ${className}`}>
+      <div className={`${/\babsolute\b/.test(className) ? "" : "relative"} overflow-hidden bg-navy ${className}`}>
         <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
       </div>
     );

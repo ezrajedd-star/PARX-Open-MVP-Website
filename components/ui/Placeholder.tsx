@@ -77,7 +77,7 @@ export function Placeholder({
     <div
       role="img"
       aria-label={`${label ?? LABEL[kind]} (placeholder)`}
-      className={`dust-texture relative overflow-hidden ${dark ? "bg-navy text-white" : "bg-dust text-navy"} ${className}`}
+      className={`dust-texture ${/\babsolute\b/.test(className) ? "" : "relative"} overflow-hidden ${dark ? "bg-navy text-white" : "bg-dust text-navy"} ${className}`}
       style={style}
     >
       <div className="speed-lines absolute inset-0" aria-hidden />
