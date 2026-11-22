@@ -1,0 +1,118 @@
+{
+  "name": "PARX Open",
+  "shortName": "PARX",
+  "fullName": "Pilipinas Archipelago RallyCross Open",
+  "season": 2027,
+  "tagline": "Five legs. Two island groups. One champion.",
+  "hero": {
+    "image": null,
+    "video": null,
+    "poster": null
+  },
+  "description": "The official home of PARX Open — the rallycross championship racing across the Visayas and Mindanao. Calendar, results, standings, teams, drivers and sponsorship.",
+  "logo": "/brand/parx-logo.svg",
+  "logoAlt": "PARX Open — Pilipinas Archipelago RallyCross Open",
+  "contactEmail": "partners@parx-open.example",
+  "sponsorshipEmail": "partners@parx-open.example",
+  "accreditation": "",
+  "sponsorDeck": "/docs/parx-open-sponsor-deck.pdf",
+  "timezone": "Asia/Manila",
+  "social": [
+    {
+      "platform": "facebook",
+      "label": "Facebook",
+      "url": "https://www.facebook.com/"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/"
+    },
+    {
+      "platform": "instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/"
+    },
+    {
+      "platform": "tiktok",
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/"
+    }
+  ],
+  "facebookPageName": "PARX Open",
+  "socialPosts": [
+    {
+      "text": "Sample post — the 2027 PARX Open calendar is out. Five legs across the Visayas and Mindanao.",
+      "date": null,
+      "url": null,
+      "image": null,
+      "sample": true
+    },
+    {
+      "text": "Sample post — meet the six teams lining up for the opening round in Ormoc.",
+      "date": null,
+      "url": null,
+      "image": null,
+      "sample": true
+    },
+    {
+      "text": "Sample post — partner with PARX Open. Title, Gold, Silver, Bronze and Local Partner packages per leg.",
+      "date": null,
+      "url": null,
+      "image": null,
+      "sample": true
+    }
+  ],
+  "stats": [
+    {
+      "label": "Facebook followers",
+      "value": null
+    },
+    {
+      "label": "Monthly reach",
+      "value": null
+    },
+    {
+      "label": "Video views",
+      "value": null
+    },
+    {
+      "label": "Spectators per leg",
+      "value": null
+    },
+    {
+      "label": "Drivers on the grid",
+      "value": "37"
+    }
+  ],
+  "nav": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "News",
+      "href": "/news"
+    },
+    {
+      "label": "Calendar",
+      "href": "/calendar"
+    },
+    {
+      "label": "Results & Standings",
+      "href": "/results"
+    },
+    {
+      "label": "Teams & Drivers",
+      "href": "/teams"
+    },
+    {
+      "label": "Shop",
+      "href": "/shop"
+    },
+    {
+      "label": "Sponsorship",
+      "href": "/sponsorship"
+    }
+  ]
+}

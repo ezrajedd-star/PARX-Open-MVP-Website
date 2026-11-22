@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "title": "Put your brand on the fastest dirt in the islands.",
+    "subtitle": "Five legs across the Visayas and Mindanao. Every stage filmed, photographed and shared. Your logo on the cars, the start gantry and every screen in between."
+  },
+  "footprint": "Five host cities across two island groups — Ormoc, Tabogon, Iloilo, Bacolod and Bukidnon. One series, five local markets, one national story.",
+  "contentMachine": [
+    { "title": "Video", "text": "Stage highlights, onboard footage and post-race recaps on Facebook and YouTube." },
+    { "title": "Photo", "text": "Professional photo coverage of every leg, with sponsor-branded galleries." },
+    { "title": "Social", "text": "Daily posts across race weeks: schedules, results, driver stories and partner shout-outs." },
+    { "title": "Influencers", "text": "Local creators and motoring personalities at the track, amplifying each leg." },
+    { "title": "Website", "text": "Your logo on every page of this site, ordered by tier, plus partner news features." }
+  ],
+  "tiers": [
+    { "id": "title", "name": "Title", "pricePerLeg": 100000, "priceLabel": null, "highlight": true, "summary": "The leg carries your name. Maximum visibility everywhere." },
+    { "id": "gold", "name": "Gold", "pricePerLeg": 50000, "priceLabel": null, "highlight": false, "summary": "Premium placement on cars, signage and broadcasts." },
+    { "id": "silver", "name": "Silver", "pricePerLeg": 30000, "priceLabel": null, "highlight": false, "summary": "Strong brand presence at the venue and online." },
+    { "id": "bronze", "name": "Bronze", "pricePerLeg": 15000, "priceLabel": null, "highlight": false, "summary": "An affordable way into motorsport marketing." },
+    { "id": "local", "name": "Local Partner", "pricePerLeg": null, "priceLabel": "In-kind / X-deal", "highlight": false, "summary": "Hotels, catering, venues and services in exchange for visibility." }
+  ],
+  "benefitsNote": "PLACEHOLDER benefits — the organisers will finalise the exact package contents.",
+  "benefits": [
+    { "label": "Naming rights", "values": { "title": "Leg naming rights", "gold": false, "silver": false, "bronze": false, "local": false } },
+    { "label": "Logo size & placement", "values": { "title": "XL — top position", "gold": "Large", "silver": "Medium", "bronze": "Small", "local": "Partner wall" } },
+    { "label": "Presmats & tarpaulins", "values": { "title": "TBA", "gold": "TBA", "silver": "TBA", "bronze": "TBA", "local": false } },
+    { "label": "Social media posts", "values": { "title": "TBA", "gold": "TBA", "silver": "TBA", "bronze": "TBA", "local": "TBA" } },
+    { "label": "Website placement", "values": { "title": true, "gold": true, "silver": true, "bronze": true, "local": true } },
+    { "label": "Booth space", "values": { "title": "TBA", "gold": "TBA", "silver": "TBA", "bronze": false, "local": false } },
+    { "label": "Awarding-ceremony mention", "values": { "title": true, "gold": true, "silver": true, "bronze": true, "local": true } },
+    { "label": "Special award naming", "values": { "title": true, "gold": "TBA", "silver": false, "bronze": false, "local": false } },
+    { "label": "VIP passes", "values": { "title": "TBA", "gold": "TBA", "silver": "TBA", "bronze": "TBA", "local": "TBA" } }
+  ],
+  "seasonBundle": {
+    "title": "Season bundle — sponsor all five legs",
+    "text": "Lock in your tier for the full season and own the story from Ormoc to Bukidnon.",
+    "discountPercent": null
+  },
+  "otherWays": [
+    { "title": "Sponsor a driver", "text": "Back an individual driver — logo on the car, suit and their social channels. Negotiated directly with the driver." },
+    { "title": "Sponsor a team", "text": "Partner with a whole team across the season. Negotiated directly with the team principal." }
+  ]
+}

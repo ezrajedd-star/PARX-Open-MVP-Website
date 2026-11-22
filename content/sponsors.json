@@ -1,0 +1,133 @@
+{
+  "note": "ALL entries below are SAMPLE placeholders. Delete them and add real sponsors. logo: null shows a branded placeholder tile.",
+  "sponsors": [
+    {
+      "name": "Sample Title Partner",
+      "tier": "title",
+      "logo": null,
+      "url": null,
+      "legs": "season",
+      "sample": true
+    },
+    {
+      "name": "Sample Gold Partner 1",
+      "tier": "gold",
+      "logo": null,
+      "url": null,
+      "legs": "season",
+      "sample": true
+    },
+    {
+      "name": "Sample Gold Partner 2",
+      "tier": "gold",
+      "logo": null,
+      "url": null,
+      "legs": "season",
+      "sample": true
+    },
+    {
+      "name": "Sample Silver Partner 1",
+      "tier": "silver",
+      "logo": null,
+      "url": null,
+      "legs": "season",
+      "sample": true
+    },
+    {
+      "name": "Sample Silver Partner 2",
+      "tier": "silver",
+      "logo": null,
+      "url": null,
+      "legs": "season",
+      "sample": true
+    },
+    {
+      "name": "Sample Silver Partner 3",
+      "tier": "silver",
+      "logo": null,
+      "url": null,
+      "legs": [
+        "ormoc"
+      ],
+      "sample": true
+    },
+    {
+      "name": "Sample Bronze Partner 1",
+      "tier": "bronze",
+      "logo": null,
+      "url": null,
+      "legs": "season",
+      "sample": true
+    },
+    {
+      "name": "Sample Bronze Partner 2",
+      "tier": "bronze",
+      "logo": null,
+      "url": null,
+      "legs": "season",
+      "sample": true
+    },
+    {
+      "name": "Sample Bronze Partner 3",
+      "tier": "bronze",
+      "logo": null,
+      "url": null,
+      "legs": [
+        "ormoc",
+        "tabogon"
+      ],
+      "sample": true
+    },
+    {
+      "name": "Sample Bronze Partner 4",
+      "tier": "bronze",
+      "logo": null,
+      "url": null,
+      "legs": [
+        "ormoc",
+        "tabogon"
+      ],
+      "sample": true
+    },
+    {
+      "name": "Sample Local Partner 1",
+      "tier": "local",
+      "logo": null,
+      "url": null,
+      "legs": [
+        "ormoc"
+      ],
+      "sample": true
+    },
+    {
+      "name": "Sample Local Partner 2",
+      "tier": "local",
+      "logo": null,
+      "url": null,
+      "legs": [
+        "ormoc"
+      ],
+      "sample": true
+    },
+    {
+      "name": "Sample Local Partner 3",
+      "tier": "local",
+      "logo": null,
+      "url": null,
+      "legs": [
+        "tabogon"
+      ],
+      "sample": true
+    },
+    {
+      "name": "Sample Local Partner 4",
+      "tier": "local",
+      "logo": null,
+      "url": null,
+      "legs": [
+        "bukidnon"
+      ],
+      "sample": true
+    }
+  ]
+}

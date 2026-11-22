@@ -1,0 +1,10 @@
+{
+  "note": "Prices are PLACEHOLDERS (null shows 'Price TBA').",
+  "items": [
+    { "slug": "parx-tee", "name": "PARX Open Tee", "price": null, "image": null, "sizes": ["S", "M", "L", "XL", "2XL"], "colors": ["Navy", "White"], "badge": "only-at-venues", "legSlug": null, "description": "Heavyweight cotton tee with the PARX Open wordmark." },
+    { "slug": "parx-cap", "name": "PARX Open Cap", "price": null, "image": null, "sizes": ["One size"], "colors": ["Navy", "Red"], "badge": "only-at-venues", "legSlug": null, "description": "Structured cap with embroidered logo." },
+    { "slug": "parx-umbrella", "name": "PARX Open Umbrella", "price": null, "image": null, "sizes": [], "colors": ["Navy / Gold"], "badge": "only-at-venues", "legSlug": null, "description": "Large golf umbrella — shade for the spectator bank." },
+    { "slug": "ormoc-leg-edition-tee", "name": "Ormoc Leg Edition Tee", "price": null, "image": null, "sizes": ["S", "M", "L", "XL"], "colors": ["Dust"], "badge": "limited-per-leg", "legSlug": "ormoc", "description": "Round 1 commemorative tee. Limited run, sold only in Ormoc." },
+    { "slug": "coming-soon-1", "name": "More merch coming soon", "price": null, "image": null, "sizes": [], "colors": [], "badge": "limited-per-leg", "legSlug": null, "description": "New drops are revealed at each leg.", "comingSoon": true }
+  ]
+}

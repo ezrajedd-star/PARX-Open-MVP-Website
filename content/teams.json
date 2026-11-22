@@ -1,0 +1,450 @@
+{
+  "note": "Team colours are PLACEHOLDER design choices until teams supply their real liveries.",
+  "teams": [
+    {
+      "slug": "team-ormoc",
+      "name": "Team Ormoc",
+      "principal": "Toto Locsin",
+      "principalDriverSlug": "toto",
+      "colors": {
+        "primary": "#C8102E",
+        "secondary": "#FFFFFF"
+      },
+      "logo": null,
+      "heroImage": null,
+      "independent": false,
+      "sponsors": [],
+      "drivers": [
+        {
+          "slug": "toto",
+          "displayName": "Toto",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "kim",
+          "displayName": "Kim",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "tingtong",
+          "displayName": "Tingtong",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "rj",
+          "displayName": "RJ",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "etchoy",
+          "displayName": "Etchoy",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "zoilo",
+          "displayName": "Zoilo",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "josh",
+          "displayName": "Josh",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "ian-m",
+          "displayName": "Ian M.",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "winwin",
+          "displayName": "Winwin",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "macky",
+          "displayName": "Macky",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        }
+      ]
+    },
+    {
+      "slug": "team-cebu",
+      "name": "Team Cebu",
+      "principal": "Jong King",
+      "principalDriverSlug": "jong",
+      "colors": {
+        "primary": "#1D4ED8",
+        "secondary": "#F2A900"
+      },
+      "logo": null,
+      "heroImage": null,
+      "independent": false,
+      "sponsors": [],
+      "drivers": [
+        {
+          "slug": "jong",
+          "displayName": "Jong",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "ian-a",
+          "displayName": "Ian A.",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "jans",
+          "displayName": "Jans",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "peter",
+          "displayName": "Peter",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "raphael",
+          "displayName": "Raphael",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "leo",
+          "displayName": "Leo",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        }
+      ]
+    },
+    {
+      "slug": "cebu-racing-group",
+      "name": "Cebu Racing Group",
+      "principal": "Jess Garcia",
+      "principalDriverSlug": "jess",
+      "colors": {
+        "primary": "#0F766E",
+        "secondary": "#FFFFFF"
+      },
+      "logo": null,
+      "heroImage": null,
+      "independent": false,
+      "sponsors": [],
+      "drivers": [
+        {
+          "slug": "jess",
+          "displayName": "Jess",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "jesse",
+          "displayName": "Jesse",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "boodie",
+          "displayName": "Boodie",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        }
+      ]
+    },
+    {
+      "slug": "gagoo-racing-team",
+      "name": "Gagoo Racing Team",
+      "principal": "Khalil Alquilos",
+      "principalDriverSlug": "khalil",
+      "colors": {
+        "primary": "#7C3AED",
+        "secondary": "#F2A900"
+      },
+      "logo": null,
+      "heroImage": null,
+      "independent": false,
+      "sponsors": [],
+      "drivers": [
+        {
+          "slug": "khalil",
+          "displayName": "Khalil",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "christian",
+          "displayName": "Christian",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "nathan",
+          "displayName": "Nathan",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        }
+      ]
+    },
+    {
+      "slug": "r10-rallyx",
+      "name": "R10 RallyX",
+      "principal": "Jam Malig",
+      "principalDriverSlug": "jam",
+      "colors": {
+        "primary": "#EA580C",
+        "secondary": "#0A0A0A"
+      },
+      "logo": null,
+      "heroImage": null,
+      "independent": false,
+      "sponsors": [],
+      "drivers": [
+        {
+          "slug": "jam",
+          "displayName": "Jam",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "mye",
+          "displayName": "Mye",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "figo",
+          "displayName": "Figo",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "dodot",
+          "displayName": "Dodot",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "jether",
+          "displayName": "Jether",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        }
+      ]
+    },
+    {
+      "slug": "ggc-garcia-racing-team",
+      "name": "GGC/Garcia Racing Team",
+      "principal": "Paulo Garcia",
+      "principalDriverSlug": "paulo",
+      "colors": {
+        "primary": "#15803D",
+        "secondary": "#F2A900"
+      },
+      "logo": null,
+      "heroImage": null,
+      "independent": false,
+      "sponsors": [],
+      "drivers": [
+        {
+          "slug": "paulo",
+          "displayName": "Paulo",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "jules",
+          "displayName": "Jules",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "julian",
+          "displayName": "Julian",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "chiquito",
+          "displayName": "Chiquito",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "justin",
+          "displayName": "Justin",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "brian",
+          "displayName": "Brian",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "francis",
+          "displayName": "Francis",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        }
+      ]
+    },
+    {
+      "slug": "independent",
+      "name": "Independent Drivers",
+      "principal": null,
+      "principalDriverSlug": null,
+      "colors": {
+        "primary": "#E9E4DA",
+        "secondary": "#0B1F4B"
+      },
+      "logo": null,
+      "heroImage": null,
+      "independent": true,
+      "sponsors": [],
+      "drivers": [
+        {
+          "slug": "george",
+          "displayName": "George",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "ivan",
+          "displayName": "Ivan",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        },
+        {
+          "slug": "vip",
+          "displayName": "Vip",
+          "surname": null,
+          "car": null,
+          "number": null,
+          "hometown": null,
+          "class": null
+        }
+      ]
+    }
+  ]
+}
