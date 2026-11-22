@@ -60,15 +60,15 @@ export function ClassificationTable({ rows, limit, caption }: { rows: ClassRow[]
           <caption className="sr-only">{caption}</caption>
           <thead className="bg-navy font-display text-xs font-bold uppercase tracking-wider text-white">
             <tr>
-              <th scope="col" className="w-14 px-2 py-2.5 text-center sm:w-16">Pos</th>
+              <th scope="col" className="w-12 px-1 py-2.5 text-center sm:w-16 sm:px-2">Pos</th>
               <th scope="col" className="px-2 py-2.5">Driver</th>
               <th scope="col" className="hidden px-2 py-2.5 text-right sm:table-cell">Total time</th>
               <th scope="col" className="px-2 py-2.5 text-right">
                 <span className="sm:hidden">Time / Gap</span>
                 <span className="hidden sm:inline">Gap</span>
               </th>
-              <th scope="col" className="w-12 px-2 py-2.5 text-right">Pts</th>
-              <th scope="col" className="w-11 px-1 py-2.5">
+              <th scope="col" className="w-10 px-1 py-2.5 text-right sm:px-2">Pts</th>
+              <th scope="col" className="w-10 px-0 py-2.5">
                 <span className="sr-only">Stage times</span>
               </th>
             </tr>
@@ -80,10 +80,10 @@ export function ClassificationTable({ rows, limit, caption }: { rows: ClassRow[]
               return (
                 <Fragment key={r.driverSlug}>
                   <tr className={`border-t border-navy/10 ${o ? "bg-dust/50" : "hover:bg-dust/30"}`}>
-                    <td className="px-2 py-2 text-center">
+                    <td className="px-1 py-2 text-center sm:px-2">
                       <Pos r={r} />
                     </td>
-                    <td className="px-2 py-2">
+                    <td className="w-full max-w-0 px-2 py-2">
                       <div className="flex items-center gap-2">
                         <span className="h-7 w-1 shrink-0 -skew-x-12" style={{ background: r.teamColor }} aria-hidden />
                         <div className="min-w-0">
@@ -98,12 +98,12 @@ export function ClassificationTable({ rows, limit, caption }: { rows: ClassRow[]
                       </div>
                     </td>
                     <td className="hidden px-2 py-2 text-right font-semibold tabular sm:table-cell">{r.total}</td>
-                    <td className="px-2 py-2 text-right tabular">
+                    <td className="whitespace-nowrap px-1 py-2 text-right tabular sm:px-2">
                       <span className="block font-semibold sm:hidden">{r.position === 1 ? r.total : r.gap}</span>
                       <span className="hidden text-ink/80 sm:inline">{r.gap}</span>
                     </td>
-                    <td className="px-2 py-2 text-right font-display text-lg font-extrabold italic tabular text-navy">{r.points}</td>
-                    <td className="px-1 py-2 text-center">
+                    <td className="px-1 py-2 text-right font-display text-lg sm:px-2 font-extrabold italic tabular text-navy">{r.points}</td>
+                    <td className="px-0 py-2 text-center">
                       <button
                         type="button"
                         onClick={() => toggle(r.driverSlug)}
